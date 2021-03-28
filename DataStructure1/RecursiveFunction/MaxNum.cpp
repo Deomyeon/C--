@@ -1,36 +1,33 @@
 #include <iostream>
-#include <stdarg.h>
+#include <vector>
  
 using namespace std;
  
- 
-int NumArgument(int count, va_list args)
-{ 
-    int n = va_arg(args, int);
-    if (count == 1)
+int MaxNum(vector<int> v, int bigger, int index)
+{
+    if (index == v.size())
     {
-        return n;
+        return bigger;
     }
     else
     {
-        int c = NumArgument(count - 1, args);
-        return (n > c) ? n : c;
+        return MaxNum(v, (bigger > v[index]) ? bigger : v[index], index + 1);
     }
-}
- 
-int MaxNum(int count, ...)
-{
-    va_list args;
-    va_start(args, count);
-    int result = NumArgument(count, args);
-    va_end(args);
-    return result;
 }
  
 int main()
 {
-    // **(n, int 1, int 2, int 3, int 4, ..., int n)** 와 같은 식으로 입력
-    cout << MaxNum(6, 17, 32, 33, 45, 79, 1);
- 
+    int a;
+    cout << "입력할 숫자의 개수를 입력해주세요.\n";
+    cin >> a;
+    vector<int> v(a);
+    for (int i = 0; i < a; i++)
+    {
+        cout << i + 1 << "번째 숫자를 입력해주세요.\n";
+        cin >> v[i];
+    }
+    
+    cout << MaxNum(v, 0, 0);
+  
     return 0;
 }

@@ -14,8 +14,9 @@ int SumNumDigit(int n)
 
 int main()
 {
-
-    cout << SumNumDigit(535523263);
+    int a;
+    cin >> a;
+    cout << SumNumDigit(a);
 
     return 0;
 }
