@@ -10,7 +10,7 @@ namespace std
         _Ty* _data;
         size_t _size;
         size_t _realSize;
-        _Ty* _start;
+        _Ty* _begin;
         _Ty* _end;
     public:
         vector();
@@ -22,7 +22,7 @@ namespace std
         bool reserve(size_t size);
         bool push_back(_Ty element);
         void pop_back();
-        inline _Ty* const start() { return this->_start; }
+        inline _Ty* const begin() { return this->_begin; }
         inline _Ty* const end() { return this->_end; }
 
         _Ty operator [](size_t index) const;
@@ -33,7 +33,7 @@ namespace std
     vector<_Ty>::vector()
     {
         this->_data = (_Ty*)malloc(0);
-        this->_start = (_Ty*)NULL;
+        this->_begin = (_Ty*)NULL;
         this->_end = this->_data;
         this->_size = 0;
         this->_realSize = 0;
@@ -43,11 +43,11 @@ namespace std
     vector<_Ty>::vector(size_t size)
     {
         this->_data = (_Ty*)malloc(sizeof(_Ty) * size);
-        this->_start = (this->_data);
+        this->_begin = (this->_data);
         this->_end = (this->_data + size);
         this->_size = size;
         this->_realSize = size;
-        for (_Ty* point = this->_start; point < this->_end; point++)
+        for (_Ty* point = this->_begin; point < this->_end; point++)
         {
             *point = _Ty();
         }
@@ -57,11 +57,11 @@ namespace std
     vector<_Ty>::vector(_Ty element, size_t size)
     {
         this->_data = (_Ty*)malloc(sizeof(_Ty) * size);
-        this->_start = (this->_data);
+        this->_begin = (this->_data);
         this->_end = (this->_data + size);
         this->_size = size;
         this->_realSize = size;
-        for (_Ty* point = this->_start; point < this->_end; point++)
+        for (_Ty* point = this->_begin; point < this->_end; point++)
         {
             *point = element;
         }
@@ -70,7 +70,7 @@ namespace std
     template <typename _Ty>
     vector<_Ty>::~vector()
     {
-        this->_start = (_Ty*)NULL;
+        this->_begin = (_Ty*)NULL;
         this->_end = (_Ty*)NULL;
         free(this->_data);
         this->_data = (_Ty*)NULL;
@@ -85,12 +85,12 @@ namespace std
         if (temp != NULL)
         {
             this->_data = (_Ty*)temp;
-            this->_start = (this->_data);
+            this->_begin = (this->_data);
             this->_end = (this->_data + size);
             if (this->_size > size)
                 this->_size = size;
             this->_realSize = size;
-            for (_Ty* point = this->_start + this->_size; point < this->_end; point++)
+            for (_Ty* point = this->_begin + this->_size; point < this->_end; point++)
             {
                 *point = _Ty();
             }
@@ -112,7 +112,7 @@ namespace std
             if (temp != NULL)
             {
                 this->_data = (_Ty*)temp;
-                this->_start = (this->_data);
+                this->_begin = (this->_data);
                 this->_realSize = this->_size;
             }
             else
@@ -121,7 +121,7 @@ namespace std
                 return false;
             }
         }
-        this->_end = (this->_start + this->_size);
+        this->_end = (this->_begin + this->_size);
         this->_data[this->_size - 1] = element;
         return true;
     }
@@ -130,7 +130,7 @@ namespace std
     void vector<_Ty>::pop_back()
     {
         this->_size--;
-        this->_end = (this->_start + this->_size);
+        this->_end = (this->_begin + this->_size);
         *(this->_end) = _Ty();
     }
 
@@ -152,7 +152,7 @@ namespace std
     {
         if (address < this->_end)
         {
-            return this->_data[address - this->_start];
+            return this->_data[address - this->_begin];
         }
         else
         {

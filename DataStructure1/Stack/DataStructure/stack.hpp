@@ -25,7 +25,7 @@ namespace std
     template <typename _Ty, class _Container>
     stack<_Ty, _Container>::stack()
     {
-        this->_bottom = this->_data.start();
+        this->_bottom = this->_data.begin();
         this->_top = this->_data.end() - 1;
     }
 
@@ -33,7 +33,7 @@ namespace std
     stack<_Ty, _Container>::stack(size_t size)
     {
         this->_data(size);
-        this->_bottom = this->_data.start();
+        this->_bottom = this->_data.begin();
         this->_top = this->_data.end() - 1;
     }
 
@@ -41,7 +41,7 @@ namespace std
     stack<_Ty, _Container>::stack(_Ty element, size_t size)
     {
         this->_data(element, size);
-        this->_bottom = this->_data.start();
+        this->_bottom = this->_data.begin();
         this->_top = this->_data.end() - 1;
     }
 
@@ -56,7 +56,7 @@ namespace std
     void stack<_Ty, _Container>::push(_Ty element)
     {
         this->_data.push_back(element);
-        this->_bottom = this->_data.start();
+        this->_bottom = this->_data.begin();
         this->_top = this->_data.end() - 1;
     }
 

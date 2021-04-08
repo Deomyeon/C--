@@ -19,7 +19,6 @@ int main()
     chStack.pop();
     cout << chStack.top();
     chStack.pop();
-
     
     return 0;
 }
