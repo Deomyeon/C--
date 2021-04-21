@@ -28,6 +28,24 @@
         "xlocinfo": "cpp",
         "xlocnum": "cpp",
         "xmemory": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "bit": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "cstdint": "cpp",
+        "exception": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "limits": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "string": "cpp",
+        "typeinfo": "cpp",
+        "xfacet": "cpp",
+        "xstddef": "cpp",
+        "xtr1common": "cpp"
     }
 }
